@@ -509,7 +509,6 @@ a {
     max-width: 900px;
     .bg-primary{
       padding: 50px;
-      background-image: url("assets/images/dashboard/login-bg.png");
       background-position: center;
       box-shadow: 1px 5px 24px 0 rgba(255, 128, 132, 0.8);
     }
@@ -2228,6 +2227,7 @@ ul.notification-dropdown.onhover-show-div {
         z-index: $main-header-z-index;
         box-shadow: -3px 1px 3px 1px rgba(68, 102, 242, 0.1);
         .logo-wrapper {
+          max-width: 200px;
           padding-left: 10px;
           height: 100%;
           display: flex;
@@ -3337,8 +3337,12 @@ $i: 1;
       width: 100%;
       z-index: 11;
       .main-header-left {
+        max-width: 200px;
+
         .logo-wrapper {
+          max-width: 200px;
           img {
+            max-width: 200px;
             height: 23px;
             margin-top: 0;
             margin-right: 15px;

@@ -3,13 +3,13 @@ import LoginTabset from './loginTabset';
 import { ArrowLeft, Sliders } from 'react-feather';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import stats from '../../assets/images/dashboard/stats.png';
+import Logo from '../../assets/images/dashboard/favicon.svg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export class Login extends Component {
     render() {
-        var settings = {
+        const settings = {
             dots: true,
             infinite: true,
             speed: 500,
@@ -24,27 +24,22 @@ export class Login extends Component {
                                 <div className="col-md-5 p-0 card-left">
                                     <div className="card bg-primary">
                                         <div className="svg-icon">
-                                            <img src={stats} className="Img-fluid" />
+                                            <img src={Logo} className="Img-fluid" />
                                         </div>
                                         <Slider className="single-item" {...settings}>
                                             <div>
                                                 <div>
-                                                    <h3>Welcome to Multikart</h3>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                                                    <h3>Welcome to Admin Panel</h3>
+                                                    <p>This is where you can manage your sales</p>
                                                 </div>
                                             </div>
                                             <div>
                                                 <div>
-                                                    <h3>Welcome to Multikart</h3>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                                                    <h3>Privacy</h3>
+                                                    <p>Make sure your password is not shared </p>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div>
-                                                    <h3>Welcome to Multikart</h3>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
-                                                </div>
-                                            </div>
+
                                         </Slider >
                                     </div>
                                 </div>
@@ -56,7 +51,6 @@ export class Login extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <a href="https://react.pixelstrap.com/multikart" target="_blank" className="btn btn-primary back-btn"><ArrowLeft />back</a>
                         </div>
                     </div>
                 </div>
