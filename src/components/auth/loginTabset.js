@@ -17,7 +17,7 @@ export const LoginTabset=()=>{
                                 <input required="" name="email" type="email" className="form-control" placeholder="Username" id="exampleInputEmail1" />
                             </div>
                             <div className="form-group">
-                                <input required="" name="email" type="password" className="form-control" placeholder="Password" />
+                                <input required="" name="password" type="password" className="form-control" placeholder="Password" />
                             </div>
                             <div className="form-terms">
                                 <div className="custom-control custom-checkbox mr-sm-2">
