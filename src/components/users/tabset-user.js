@@ -14,9 +14,9 @@ const  Tabset_user=()=> {
 
         try {
             const res = await axios.post('/api/v1/users', data, config);
-            toast.success(`You have successfully created a user with the name of  ${res.data.data.name}`, {
-                position: "top-right",
-                autoClose: 5000,
+            toast.success(`You have successfully created a ${res.data.data.role} with the name of  ${res.data.data.name}`, {
+                position: "top-center",
+                autoClose: 10000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -25,7 +25,7 @@ const  Tabset_user=()=> {
             });
         }catch (e){
             toast.error(e.response.data.error, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
