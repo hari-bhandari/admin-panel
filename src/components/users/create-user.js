@@ -12,7 +12,6 @@ export class Create_user extends Component {
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5> Add User</h5>
                                 </div>
                                 <div className="card-body">
                                     <Tabset_user />

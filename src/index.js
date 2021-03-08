@@ -30,6 +30,7 @@ import Profile from './components/settings/profile';
 import Reports from './components/reports/report';
 import Invoice from './components/invoice';
 import Login from './components/auth/login';
+import {ToastContainer} from "react-toastify";
 
 
 
@@ -38,6 +39,7 @@ class Root extends Component {
         return (
             <BrowserRouter basename={'/'}>
                 <ScrollContext>
+
                     <Switch>
                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
                         <Route exact path={`${process.env.PUBLIC_URL}/auth/login`} component={Login} />
@@ -70,6 +72,18 @@ x
                         </App>
                     </Switch>
                 </ScrollContext>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+
             </BrowserRouter>
         )
     }

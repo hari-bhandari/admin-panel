@@ -61,11 +61,12 @@ export class Datatable extends Component {
     }
 
     render() {
+        let key;
         const { pageSize, myClass, multiSelectOption, pagination } = this.props;
         const { myData } = this.state
 
         const columns = [];
-        for (var key in myData[0]) {
+        for (key in myData[0]) {
 
             let editable = this.renderEditable
             if (key === "image") {
@@ -95,7 +96,7 @@ export class Datatable extends Component {
                 });
         }
 
-        if (multiSelectOption == true) {
+        if (multiSelectOption === true) {
             columns.push(
                 {
                     Header: <button className="btn btn-danger btn-sm btn-delete mb-0 b-r-4"
@@ -105,11 +106,7 @@ export class Datatable extends Component {
                                     this.handleRemoveRow()
                             }}>Delete</button>,
                     id: 'delete',
-                    accessor: str => "delete",
                     sortable: false,
-                    style: {
-                        textAlign: 'center'
-                    },
                     Cell: (row) => (
                         <div>
                             <span >
