@@ -15,6 +15,7 @@ export const LoginTabset=({history})=>{
             history.push('/dashboard')
         }
     },[isAuthenticated])
+
     const onSubmit = async (data) =>{
         const config = {
             headers: {
@@ -24,7 +25,7 @@ export const LoginTabset=({history})=>{
 
         try {
             const res = await axios.post('/api/v1/auth/login', data, config);
-            console.log(res)
+            console.log(data)
             if(res.data.role!=='admin'){
                 toast.error(`Only admin can access this page`, {
                     position: "top-center",
@@ -47,7 +48,7 @@ export const LoginTabset=({history})=>{
                     progress: undefined,
                 });
             }
-            setToken(res.data.token,true)
+            setToken(res.data.token,data.stayLoggedIn)
 
         }catch (e){
             toast.error(e.response.data.error, {
@@ -81,7 +82,7 @@ export const LoginTabset=({history})=>{
                                 <div className="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" className="custom-control-input" id="customControlAutosizing" />
                                     <label className="d-block">
-                                        <input className="checkbox_animated" id="chk-ani2" type="checkbox" />
+                                        <input className="checkbox_animated" id="chk-ani2" type="checkbox" name={"stayLoggedIn"}  ref={register}/>
                                         Stay logged in <span className="pull-right"> <a href="#" className="btn btn-default forgot-pass p-0">lost your password</a></span>
                                     </label>
                                 </div>
