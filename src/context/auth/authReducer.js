@@ -10,13 +10,15 @@ export default (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload
+        user: action.payload,
+        loading:false
       };
     case AUTH_ERROR_GET_ME:
       return {
         ...state,
         user: null,
-        isAuthenticated: false
+        isAuthenticated: false,
+        loading:false
       };
     case LOGOUT:
       localStorage.removeItem('token');
