@@ -9,34 +9,10 @@ export class Datatable extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            checkedValues: [],
             myData: this.props.myData
         }
     }
 
-    selectRow = (e, i) => {
-        if (!e.target.checked) {
-            this.setState({
-                checkedValues: this.state.checkedValues.filter((item, j) => i !== item)
-            });
-        } else {
-            this.state.checkedValues.push(i);
-            this.setState({
-                checkedValues: this.state.checkedValues
-            })
-        }
-    }
-
-    handleRemoveRow = () => {
-        const selectedValues = this.state.checkedValues;
-        const updatedData = this.state.myData.filter(function (el) {
-            return selectedValues.indexOf(el.id) < 0;
-        });
-        this.setState({
-            myData: updatedData
-        })
-        toast.success("Successfully Deleted !")
-    };
 
     renderEditable = (cellInfo) => {
         return (
@@ -69,22 +45,7 @@ export class Datatable extends Component {
         for (key in myData[0]) {
 
             let editable = this.renderEditable
-            if (key === "image") {
-                editable = null;
-            }
-            if (key === "status") {
-                editable = null;
-            }
-            if (key === "avtar") {
-                editable = null;
-            }
-            if (key === "vendor") {
-                editable = null;
-            }
-            if(key === "order_status"){
-                editable = null;
-            }
-
+            editable=null
             columns.push(
                 {
                     Header: <b>{this.Capitalize(key.toString())}</b>,
@@ -96,32 +57,6 @@ export class Datatable extends Component {
                 });
         }
 
-        if (multiSelectOption === true) {
-            columns.push(
-                {
-                    Header: <button className="btn btn-danger btn-sm btn-delete mb-0 b-r-4"
-                        onClick={
-                            (e) => {
-                                if (window.confirm('Are you sure you wish to delete this item?'))
-                                    this.handleRemoveRow()
-                            }}>Delete</button>,
-                    id: 'delete',
-                    sortable: false,
-                    Cell: (row) => (
-                        <div>
-                            <span >
-                                <input type="checkbox" name={row.original.id} defaultChecked={this.state.checkedValues.includes(row.original.id)}
-                                    onChange={e => this.selectRow(e, row.original.id)} />
-                            </span>
-                        </div>
-                    ),
-                    accessor: key,
-                    style: {
-                        textAlign: 'center'
-                    }
-                }
-            )
-        } else {
             columns.push(
                 {
                     Header: <b>Action</b>,
@@ -151,7 +86,7 @@ export class Datatable extends Component {
                 sortable: false
             }
         )
-        }
+
 
         return (
             <Fragment>

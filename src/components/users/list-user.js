@@ -1,12 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment, useState} from 'react';
 import { Link } from 'react-router-dom'
 import Breadcrumb from '../common/breadcrumb';
-import data from '../../assets/data/listUser';
 import Datatable from '../common/datatable'
+import useAxios from 'axios-hooks'
+import {Loader} from "react-feather";
+const List_user =() =>{
+     const [{ data, loading, error }, refetch] = useAxios(
+         '/api/v1/users'
+     )
+     if(loading){
+         return (
+             <Loader/>
+         )
 
+     }
 
-export class List_user extends Component {
-    render() {
         return (
             <Fragment>
                 <Breadcrumb title="User List" parent="Users" />
@@ -23,7 +31,7 @@ export class List_user extends Component {
                             <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
                                 <Datatable
                                     multiSelectOption={true}
-                                    myData={data}
+                                    myData={data.data}
                                     pageSize={10}
                                     pagination={true}
                                     class="-striped -highlight"
@@ -34,7 +42,6 @@ export class List_user extends Component {
                 </div>
             </Fragment>
         )
-    }
 }
 
 export default List_user
