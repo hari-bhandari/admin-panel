@@ -1,12 +1,20 @@
-import React,  {Fragment } from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { User } from 'react-feather';
-import { withRouter } from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-toastify";
-export const LoginTabset=()=>{
+import AuthContext from "../../context/auth/authContext";
+import {withRouter} from "react-router-dom";
+export const LoginTabset=({history})=>{
+    const authContext=useContext(AuthContext);
+    const {setToken,isAuthenticated}=authContext;
     const { register, handleSubmit, errors } = useForm();
+    useEffect(()=>{
+        if(isAuthenticated){
+            history.push('/dashboard')
+        }
+    },[isAuthenticated])
     const onSubmit = async (data) =>{
         const config = {
             headers: {
@@ -16,16 +24,31 @@ export const LoginTabset=()=>{
 
         try {
             const res = await axios.post('/api/v1/auth/login', data, config);
-            if(res.data.data.role)
-            toast.success(`You have successfully created a ${res.data.data.role} with the name of  ${res.data.data.name}`, {
-                position: "top-center",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            console.log(res)
+            if(res.data.role!=='admin'){
+                toast.error(`Only admin can access this page`, {
+                    position: "top-center",
+                    autoClose: 10000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            if (!res.data.token){
+                toast.error(`Something went wrong`, {
+                    position: "top-center",
+                    autoClose: 10000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            setToken(res.data.token,true)
+
         }catch (e){
             toast.error(e.response.data.error, {
                 position: "top-center",
@@ -64,7 +87,7 @@ export const LoginTabset=()=>{
                                 </div>
                             </div>
                             <div className="form-button">
-                                <button className="btn btn-primary" type="submit"  onClick={() => this.routeChange()}>Login</button>
+                                <button className="btn btn-primary" type="submit" >Login</button>
                             </div>
                         </form>
                     </TabPanel>

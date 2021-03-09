@@ -1,9 +1,10 @@
-import React, { Component,Fragment } from 'react'
+import React, {Fragment} from 'react'
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-toastify";
 
 const  Tabset_user=()=> {
+
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = async (data) =>{
         const config = {

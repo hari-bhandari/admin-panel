@@ -5,10 +5,8 @@ import authReducer from './authReducer';
 import setAuthToken from '../../util/setAuthToken';
 import {
   USER_LOADED,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT,
- AUTH_ERROR_GET_ME
+  AUTH_ERROR_GET_ME
 } from '../types';
 
 const AuthState = props => {
@@ -24,39 +22,47 @@ const AuthState = props => {
 
   // Load User
   const loadUser = async () => {
-    setAuthToken(localStorage.getItem('token'));
-    try {
-      const res = await axios.get('/api/auth/me');
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data.data
-      });
-    } catch (err) {
+    const token=localStorage.getItem('token')
+    if(token){
+      setAuthToken(token)
+      try {
+        const res = await axios.get('/api/v1/auth/me');
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data.data
+        });
+      } catch (err) {
+        dispatch({ type: AUTH_ERROR_GET_ME });
+      }
+
+    }
+
+  };
+
+  // Login User
+  const setToken = async (token,remember) => {
+    console.log(token,remember)
+    if(remember){
+      localStorage.setItem('token',token)
+    }
+    if(token){
+      setAuthToken(token)
+      try {
+        const res = await axios.get('/api/v1/auth/me');
+
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data.data
+        });
+      }
+     catch (err) {
       dispatch({ type: AUTH_ERROR_GET_ME });
     }
-  };
-  // Login User
-  const login = async formData => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
 
-    try {
-      const res = await axios.post('/api/auth/login', formData, config);
 
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data
-      });
-
-      await loadUser();
-    } catch (err) {
-      dispatch({
-        type: LOGIN_FAIL,
-        payload: err.response.data.error
-      });
+    }
+    if(!token){
+      dispatch({ type: LOGOUT })
     }
   };
 
@@ -72,8 +78,7 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         user: state.user,
         loadUser,
-        login,
-        logout,
+        logout,setToken
       }}
     >
       {props.children}

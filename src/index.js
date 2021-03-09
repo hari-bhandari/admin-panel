@@ -31,12 +31,13 @@ import Reports from './components/reports/report';
 import Invoice from './components/invoice';
 import Login from './components/auth/login';
 import {ToastContainer} from "react-toastify";
-
+import AuthState from "./context/auth/AuthState";
 
 
 class Root extends Component {
     render() {
         return (
+            <AuthState>
             <BrowserRouter basename={'/'}>
                 <ScrollContext>
 
@@ -85,6 +86,7 @@ x
                 />
 
             </BrowserRouter>
+            </AuthState>
         )
     }
 }
