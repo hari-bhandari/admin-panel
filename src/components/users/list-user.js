@@ -14,6 +14,11 @@ const List_user =() =>{
          )
 
      }
+     if(error){
+         return (
+             <h2>Something went wrong</h2>
+         )
+     }
 
         return (
             <Fragment>
