@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import LoginTabset from './loginTabset';
-import { ArrowLeft, Sliders } from 'react-feather';
-import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import Logo from '../../assets/images/dashboard/favicon.svg';
 import "slick-carousel/slick/slick.css";
