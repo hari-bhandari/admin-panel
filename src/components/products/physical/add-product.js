@@ -11,7 +11,7 @@ const Add_product = () => {
     const [quantity, setQuantity] = useState(1)
     const [thumbImage, setThumbImage] = useState(null)
     const [images, setImages] = useState([])
-
+    const [content,setContent]=useState('')
 
     const onDropForThumbnail = async (picture) => {
         const formData = new FormData();
@@ -96,6 +96,10 @@ const Add_product = () => {
     }
     const handleChange = (e) => {
         setQuantity(e.target.value)
+    }
+    const onChange=(e)=>{
+        const  newContent = e.editor.getData();
+        setContent(newContent)
     }
 
     return (
@@ -224,6 +228,10 @@ const Add_product = () => {
                                                     <div className="col-xl-8 col-sm-7 description-sm">
                                                         <CKEditors
                                                             activeclassName="p10"
+                                                            content={content}
+                                                            events={{
+                                                                "change":onChange
+                                                            }}
 
                                                         />
                                                     </div>
