@@ -13,11 +13,6 @@ export class Add_product extends Component {
             file: '',
             dummyimgs: [
                 { img: user },
-                { img: user },
-                { img: user },
-                { img: user },
-                { img: user },
-                { img: user },
             ]
         }
     }
@@ -31,6 +26,17 @@ export class Add_product extends Component {
                 return null;
             }
         });
+    }
+    showWidget = () => {
+
+        let widget = window.cloudinary.createUploadWidget({
+                cloudName: `wisecart`,
+                uploadPreset: `your uploadPreset`},
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    console.log(result.info.url);
+                }});
+        widget.open()
     }
     DecreaseItem = () => {
         this.setState(prevState => {
@@ -79,7 +85,7 @@ export class Add_product extends Component {
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header">
-                                    <h5>Add Product</h5>
+                                    <h5 onClick={this.showWidget}>Add Product</h5>
                                 </div>
                                 <div className="card-body">
                                     <div className="row product-adding">
