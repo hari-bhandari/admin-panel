@@ -36,8 +36,8 @@ const Add_product = () => {
     const [quantity, setQuantity] = useState(1)
     const [thumbImage, setThumbImage] = useState(null)
     const [images, setImages] = useState([])
-    const [category,setCategory]=useState('')
-    const [subCategory,setSubCategory]=useState('')
+    const [category,setCategory]=useState(null)
+    const [subCategory,setSubCategory]=useState(null)
     const [description,setDescription]=useState('')
 
     const onDropForThumbnail = async (picture) => {
@@ -125,10 +125,10 @@ const Add_product = () => {
         setQuantity(e.target.value)
     }
     const  handleChangeForCategory = selectedOption => {
-        setCategory( selectedOption.value );
+        setCategory( selectedOption );
     };
     const  handleChangeForSubCategory = selectedOption => {
-        setSubCategory( selectedOption.value );
+        setSubCategory( selectedOption );
     };
     const onChange=(e)=>{
         const  newContent = e.editor.getData();
@@ -141,7 +141,7 @@ const Add_product = () => {
                 'Content-Type': 'application/json'
             }
         };
-        const data={name,price,countInStock:quantity,description,subCategory,category,images,thumbImage}
+        const data={name,price,countInStock:quantity,description,subCategory:subCategory.value,category:category.value,images,thumbImage}
 
         try {
             const res = await axios.post('/api/v1/users/products', data, config);
