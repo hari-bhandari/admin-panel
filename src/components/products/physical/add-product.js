@@ -6,12 +6,39 @@ import 'react-dropzone-uploader/dist/styles.css'
 import ImageUploader from 'react-images-upload'
 import {toast} from "react-toastify";
 import axios from "axios";
-
+import Select from "react-select";
 const Add_product = () => {
+    const categoryOptions = [
+        { value: 'smart phones', label: 'Smart Phones' },
+        { value: 'tv', label: 'TV' },
+        { value: 'watch', label: 'Watches' },
+    ];
+    const subCategoryOptions = [
+        { value: 'apple', label: 'Apple' },
+        { value: 'samsung', label: 'Samsung' },
+        { value: 'oppo', label: 'Oppo' },
+    ];
+
+
+
+    const handleInvalidSubmit=(event, errors, values)=> {
+        toast.error("Something went wrong", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
     const [quantity, setQuantity] = useState(1)
     const [thumbImage, setThumbImage] = useState(null)
     const [images, setImages] = useState([])
-    const [content,setContent]=useState('')
+    const [category,setCategory]=useState('')
+    const [subCategory,setSubCategory]=useState('')
+    const [description,setDescription]=useState('')
 
     const onDropForThumbnail = async (picture) => {
         const formData = new FormData();
@@ -97,11 +124,49 @@ const Add_product = () => {
     const handleChange = (e) => {
         setQuantity(e.target.value)
     }
+    const  handleChangeForCategory = selectedOption => {
+        setCategory( selectedOption.value );
+    };
+    const  handleChangeForSubCategory = selectedOption => {
+        setSubCategory( selectedOption.value );
+    };
     const onChange=(e)=>{
         const  newContent = e.editor.getData();
-        setContent(newContent)
+        setDescription(newContent)
     }
+    const handleValidSubmit=async (event, values) => {
+        const {name, price} = values
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const data={name,price,countInStock:quantity,description,subCategory,category,images,thumbImage}
 
+        try {
+            const res = await axios.post('/api/v1/users/products', data, config);
+            toast.success(`You have successfully created a  product with the name of  ${res.data.name}`, {
+                position: "top-center",
+                autoClose: 10000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } catch (e) {
+            toast.error(e.response.data.error, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+
+    }
     return (
         <Fragment>
             <Breadcrumb title="Add Product" parent="Physical"/>
@@ -143,20 +208,19 @@ const Add_product = () => {
                                                 </div>
                                                 <div className="col-xl-3 xl-50 col-sm-6 col-3">
                                                     <ul className="file-upload-product">
-
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-xl-7">
-                                        <AvForm className="needs-validation add-product-form">
+                                        <AvForm className="needs-validation add-product-form" onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
                                             <div className="form form-label-center">
                                                 <div className="form-group mb-3 row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Product Name :</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <AvField className="form-control" name="product_name"
-                                                                 id="validationCustom01" type="text" required/>
+                                                        <AvField className="form-control" name="name"
+                                                                 id="validationCustom01" type="text"  required />
                                                     </div>
                                                     <div className="valid-feedback">Looks good!</div>
                                                 </div>
@@ -164,32 +228,30 @@ const Add_product = () => {
                                                     <label className="col-xl-3 col-sm-4 mb-0">Price :</label>
                                                     <div className="col-xl-8 col-sm-7">
                                                         <AvField className="form-control mb-0" name="price"
-                                                                 id="validationCustom02" type="number" required/>
+                                                                 id="validationCustom02" type="number"  required/>
                                                     </div>
                                                     <div className="valid-feedback">Looks good!</div>
-                                                </div>
-                                                <div className="form-group mb-3 row">
-                                                    <label className="col-xl-3 col-sm-4 mb-0">Product Code :</label>
-                                                    <div className="col-xl-8 col-sm-7">
-                                                        <AvField className="form-control " name="product_code"
-                                                                 id="validationCustomUsername" type="number" required/>
-                                                    </div>
-                                                    <div className="invalid-feedback offset-sm-4 offset-xl-3">Please
-                                                        choose Valid Code.
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="form">
                                                 <div className="form-group row">
-                                                    <label className="col-xl-3 col-sm-4 mb-0">Select Size :</label>
+                                                    <label className="col-xl-3 col-sm-4 mb-0">Select Category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <select className="form-control digits"
-                                                                id="exampleFormControlSelect1">
-                                                            <option>Small</option>
-                                                            <option>Medium</option>
-                                                            <option>Large</option>
-                                                            <option>Extra Large</option>
-                                                        </select>
+                                                        <Select
+                                                            value={category}
+                                                            onChange={handleChangeForCategory}
+                                                            options={categoryOptions}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group row">
+                                                    <label className="col-xl-3 col-sm-4 mb-0">Select sub category</label>
+                                                    <div className="col-xl-8 col-sm-7">
+                                                        <Select
+                                                            value={subCategory}
+                                                            onChange={handleChangeForSubCategory}
+                                                            options={subCategoryOptions}
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
@@ -228,7 +290,7 @@ const Add_product = () => {
                                                     <div className="col-xl-8 col-sm-7 description-sm">
                                                         <CKEditors
                                                             activeclassName="p10"
-                                                            content={content}
+                                                            content={description}
                                                             events={{
                                                                 "change":onChange
                                                             }}
@@ -239,7 +301,6 @@ const Add_product = () => {
                                             </div>
                                             <div className="offset-xl-3 offset-sm-4">
                                                 <button type="submit" className="btn btn-primary">Add</button>
-                                                <button type="button" className="btn btn-light">Discard</button>
                                             </div>
                                         </AvForm>
                                     </div>
