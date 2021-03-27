@@ -1,4 +1,4 @@
-import React, {Component, Fragment, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import Breadcrumb from '../../common/breadcrumb';
 import CKEditors from "react-ckeditor-component";
 import {AvField, AvForm} from 'availity-reactstrap-validation';
@@ -144,7 +144,7 @@ const Add_product = () => {
         const data={name,price,countInStock:quantity,description,subCategory:subCategory.value,category:category.value,images,thumbImage}
 
         try {
-            const res = await axios.post('/api/v1/users/products', data, config);
+            const res = await axios.post('/api/v1/products', data, config);
             toast.success(`You have successfully created a  product with the name of  ${res.data.name}`, {
                 position: "top-center",
                 autoClose: 10000,

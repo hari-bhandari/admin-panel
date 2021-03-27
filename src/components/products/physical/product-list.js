@@ -7,7 +7,7 @@ import useAxios from "axios-hooks";
 
 const Product_list = () => {
     const [{data, loading, error}, refetch] = useAxios(
-        '/api/v1/users/products'
+        '/api/v1/products'
     )
     if(loading){
         return (

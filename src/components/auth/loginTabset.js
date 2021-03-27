@@ -25,8 +25,8 @@ export const LoginTabset=({history})=>{
 
         try {
             const res = await axios.post('/api/v1/auth/login', data, config);
-            console.log(data)
-            if(res.data.role!=='admin'){
+            console.log(res)
+            if(res.data.user.role!=='admin'){
                 toast.error(`Only admin can access this page`, {
                     position: "top-center",
                     autoClose: 10000,

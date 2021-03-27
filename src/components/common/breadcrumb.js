@@ -12,7 +12,7 @@ export class Breadcrumb extends Component {
                             <div className="col-lg-6">
                                 <div className="page-header-left">
                                     <h3>{this.props.title}
-                                    <small>Multikart Admin panel</small>
+                                    <small>WiseCart Admin panel</small>
                                     </h3>
                                 </div>
                             </div>

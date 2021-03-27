@@ -41,11 +41,7 @@ const Root =()=> {
     useEffect(()=>{
         loadUser()
     },[])
-    // useEffect(()=>{
-    //     if(!isAuthenticated){
-    //         window.location.replace("/");
-    //     }
-    // },[isAuthenticated])
+
         return (
             <BrowserRouter basename={'/'}>
                 <ScrollContext>
@@ -55,7 +51,7 @@ const Root =()=> {
 
                         <App>
                             <ProtectedRoute path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
-                                
+
                             <ProtectedRoute path={`${process.env.PUBLIC_URL}/products/physical/category`} component={Category} />
                             <ProtectedRoute path={`${process.env.PUBLIC_URL}/products/physical/sub-category`} component={Sub_category} />
                             <ProtectedRoute path={`${process.env.PUBLIC_URL}/products/physical/product-list`} component={Product_list} />
