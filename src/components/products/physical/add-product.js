@@ -13,6 +13,7 @@ const Add_product = () => {
         { value: 'tv', label: 'TV' },
         { value: 'watch', label: 'Watches' },
     ];
+
     const subCategoryOptions = [
         { value: 'apple', label: 'Apple' },
         { value: 'samsung', label: 'Samsung' },

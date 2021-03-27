@@ -1,27 +1,38 @@
-import React, { Component, Fragment } from 'react'
+import React, {Component, Fragment, useState} from 'react'
 import Breadcrumb from '../../common/breadcrumb';
 import Modal from 'react-responsive-modal';
 import data from '../../../assets/data/sub-category';
 import Datatable from '../../common/datatable'
+import useAxios from "axios-hooks";
+import Select from "react-select";
+const SubCategory =()=> {
+    const [open,setOpen]=useState(false)
+    const [category,setCategory]=useState(null)
+    // const [{data, loading, error}, refetch] = useAxios(
+    //     '/api/v1/category'
+    // )
+    // if(loading){
+    //     return (
+    //         <div>Loading...</div>
+    //     )
 
-export class Sub_category extends Component {
-    constructor(props) {
-        super(props);
+    // }
+    const categoryOptions = [
+        { value: 'smart phones', label: 'Smart Phones' },
+        { value: 'tv', label: 'TV' },
+        { value: 'watch', label: 'Watches' },
+    ];
 
-        this.state = {
-            open: false,
-        };
-    }
-    onOpenModal = () => {
-        this.setState({ open: true });
+    const onOpenModal = () => {
+        setOpen(true)
+    };
+    const onCloseModal = () => {
+        setOpen(true)
+    };
+    const  handleChangeForCategory = selectedOption => {
+        setCategory( selectedOption );
     };
 
-    onCloseModal = () => {
-        this.setState({ open: false });
-    };
-
-    render() {
-        const { open } = this.state;
         return (
             <Fragment>
                 <Breadcrumb title="Sub Category" parent="Physical" />
@@ -34,10 +45,18 @@ export class Sub_category extends Component {
                                     <h5>Products Sub Category</h5>
                                 </div>
                                 <div className="card-body">
-                                    <div className="btn-popup pull-right">
+                                    <div className="btn-popup ">
+                                        <div className="subCat-top">
+                                            <Select
+                                                value={category}
+                                                onChange={handleChangeForCategory}
+                                                options={categoryOptions}
+                                            />
 
-                                        <button type="button" className="btn btn-primary" onClick={this.onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Sub Category</button>
-                                        <Modal open={open} onClose={this.onCloseModal} >
+                                            <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Sub Category</button>
+                                        </div>
+
+                                        <Modal open={open} onClose={onOpenModal} >
                                             <div className="modal-header">
                                                 <h5 className="modal-title f-w-600" id="exampleModalLabel2">Add Physical Product</h5>
                                             </div>
@@ -54,8 +73,8 @@ export class Sub_category extends Component {
                                                 </form>
                                             </div>
                                             <div className="modal-footer">
-                                                <button type="button" className="btn btn-primary" onClick={() => this.onCloseModal('VaryingMdo')}>Save</button>
-                                                <button type="button" className="btn btn-secondary" onClick={() => this.onCloseModal('VaryingMdo')}>Close</button>
+                                                <button type="button" className="btn btn-primary" onClick={() =>onCloseModal()}>Save</button>
+                                                <button type="button" className="btn btn-secondary" onClick={() => onCloseModal()}>Close</button>
                                             </div>
                                         </Modal>
                                     </div>
@@ -77,7 +96,6 @@ export class Sub_category extends Component {
                 {/* <!-- Container-fluid Ends--> */}
             </Fragment>
         )
-    }
 }
 
-export default Sub_category
+export default SubCategory
