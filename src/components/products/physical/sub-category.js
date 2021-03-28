@@ -47,7 +47,7 @@ const SubCategory =()=> {
                                 <div className="card-body">
                                     <div className="btn-popup ">
                                         <div className="subCat-top">
-                                            <AsyncSelect initialValue={"Please select the category"}/>
+                                            <AsyncSelect initialValue={"Select Category"} background={true}/>
 
                                             <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Sub Category</button>
                                         </div>
