@@ -7,6 +7,7 @@ import ImageUploader from 'react-images-upload'
 import {toast} from "react-toastify";
 import axios from "axios";
 import Select from "react-select";
+import {ShowError, ShowSuccess} from "../../../util/alert";
 const Add_product = () => {
     const categoryOptions = [
         { value: 'smart phones', label: 'Smart Phones' },
@@ -23,15 +24,7 @@ const Add_product = () => {
 
 
     const handleInvalidSubmit=(event, errors, values)=> {
-        toast.error("Something went wrong", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        ShowError("Something went wrong")
     }
 
     const [quantity, setQuantity] = useState(1)
@@ -53,29 +46,13 @@ const Add_product = () => {
             })
             if(res.data.imgLinks){
                 setThumbImage(res.data.imgLinks[0])
-                toast.success(`You have successfully uploaded thumbnail image to cloud `, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                })
+                ShowSuccess(`You have successfully uploaded thumbnail image to cloud `)
             }
 
 
 
         } catch (e) {
-            toast.error(`Something went wrong. Please try again later`, {
-                position: "top-center",
-                autoClose: 80000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
+            ShowError(`Something went wrong. Please try again later`)
         }
 
     }
@@ -92,28 +69,12 @@ const Add_product = () => {
             })
             if (res.data.imgLinks) {
                 setImages(res.data.imgLinks)
-                toast.success(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                })
+                ShowSuccess(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `)
             }
 
 
         } catch (e) {
-            toast.error(`Something went wrong. Please try again later`, {
-                position: "top-center",
-                autoClose: 80000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
+           ShowError("Something went wrong. Please try again later")
         }
     }
     const IncrementItem = () => {
@@ -146,25 +107,9 @@ const Add_product = () => {
 
         try {
             const res = await axios.post('/api/v1/products', data, config);
-            toast.success(`You have successfully created a  product with the name of  ${res.data.name}`, {
-                position: "top-center",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowSuccess(`You have successfully created a  product with the name of  ${res.data.name}`)
         } catch (e) {
-            toast.error(e.response.data.error, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowError(e.response.data.error)
         }
 
     }

@@ -6,6 +6,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import AuthContext from "../../context/auth/authContext";
 import {withRouter} from "react-router-dom";
+import {ShowError} from "../../util/alert";
 export const LoginTabset=({history})=>{
     const authContext=useContext(AuthContext);
     const {setToken,isAuthenticated}=authContext;
@@ -27,39 +28,16 @@ export const LoginTabset=({history})=>{
             const res = await axios.post('/api/v1/auth/login', data, config);
             console.log(res)
             if(res.data.user.role!=='admin'){
-                toast.error(`Only admin can access this page`, {
-                    position: "top-center",
-                    autoClose: 10000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                ShowError(`Only admin can access this page`)
             }
             if (!res.data.token){
-                toast.error(`Something went wrong`, {
-                    position: "top-center",
-                    autoClose: 10000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                ShowError(`Something went wrong`)
             }
             setToken(res.data.token,data.stayLoggedIn)
 
         }catch (e){
-            toast.error(e.response.data.error, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowError(e.response.data.error)
+
         }
     }
     return (

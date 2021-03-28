@@ -82,9 +82,9 @@ export class Datatable extends Component {
                                 ></i>
                             </span>
 
-                        <span><i className="fa fa-pencil" style={{ width: 35, fontSize: 20, padding: 11,color:'rgb(40, 167, 69)' }}></i></span>
-                    </div>
-                ),
+                            <span onClick={()=>{this.props.edit(row.original)}}><i className="fa fa-pencil" style={{ width: 35, fontSize: 20, padding: 11,color:'rgb(40, 167, 69)' }}></i></span>
+                        </div>
+                    ),
                 style: {
                     textAlign: 'center'
                 },

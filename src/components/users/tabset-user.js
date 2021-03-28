@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {ShowError, ShowSuccess} from "../../util/alert";
 
 const  Tabset_user=()=> {
 
@@ -15,25 +16,9 @@ const  Tabset_user=()=> {
 
         try {
             const res = await axios.post('/api/v1/users', data, config);
-            toast.success(`You have successfully created a ${res.data.data.role} with the name of  ${res.data.data.name}`, {
-                position: "top-center",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowSuccess(`You have successfully created a ${res.data.data.role} with the name of  ${res.data.data.name}`)
         }catch (e){
-            toast.error(e.response.data.error, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowError(e.response.data.error)
         }
     }
     console.log(errors);

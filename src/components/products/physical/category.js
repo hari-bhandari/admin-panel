@@ -7,9 +7,10 @@ import useAxios from "axios-hooks";
 import ImageUploader from "react-images-upload";
 import axios from "axios";
 import {toast} from "react-toastify";
-
+import {ShowError,ShowSuccess} from "../../../util/alert";
 const Category=()=> {
     const [open,setOpen]=useState(false)
+    const [update,setUpdate]=useState(false)
     const [image,setImage]=useState(null)
     const [name,setName]=useState(null)
     const [description,setDescription]=useState(null)
@@ -36,40 +37,17 @@ const Category=()=> {
             }
         };
         if(name===null|| description===null){
-             toast.error(`Please add a valid name and description`, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowError("name and description must be added")
         }
         else {
 
         try {
             const res = await axios.post('/api/v1/category', {name,description,image:image[0]}, config);
-            toast.success(`You have successfully created a  category with the name of  ${res.data.category.name}`, {
-                position: "top-center",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowSuccess(`You have successfully created a  category with the name of  ${res.data.category.name}`)
+
             refetch()
         } catch (e) {
-            toast.error(e.response.data.error, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            ShowError(e.response.data.error)
         }
         }
     }
@@ -77,28 +55,60 @@ const Category=()=> {
 
             try {
                 const res = await axios.delete(`/api/v1/category/${id}`);
-                toast.success(`You have successfully created a  category with the name of  ${res.data.message}`, {
-                    position: "top-center",
-                    autoClose: 10000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                ShowSuccess(`You have successfully created a  category with the name of  ${res.data.message}`)
                 refetch()
             } catch (e) {
-                toast.error(e.response.data.error, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                ShowError(e.response.data.error)
             }
         }
+    const editCategory=async (data)=>{
+        setOpen(true)
+        setName(data.name)
+        setDescription(data.description)
+        setUpdate(true)
+        // const config = {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // };
+        // if(name===null|| description===null){
+        //     toast.error(`Please add a valid name and description`, {
+        //         position: "top-center",
+        //         autoClose: 5000,
+        //         hideProgressBar: false,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //     });
+        // }
+        // else {
+        //
+        //     try {
+        //         const res = await axios.put(`/api/v1/category/${data._id}`, {name,description,image:image[0]}, config);
+        //         toast.success(`You have successfully updated a  category with the name of  ${res.data.category.name}`, {
+        //             position: "top-center",
+        //             autoClose: 10000,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //         });
+        //         refetch()
+        //     } catch (e) {
+        //         toast.error(e.response.data.error, {
+        //             position: "top-center",
+        //             autoClose: 5000,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //         });
+        //     }
+        // }
+    }
 
     data.data.forEach(item=>{
             if(typeof item.image==="string") {
@@ -120,28 +130,12 @@ const Category=()=> {
             })
             if (res.data.imgLinks) {
                 setImage(res.data.imgLinks)
-                toast.success(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                })
+                ShowSuccess(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `)
             }
 
 
         } catch (e) {
-            toast.error(`Something went wrong. Please try again later`, {
-                position: "top-center",
-                autoClose: 80000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
+            ShowError(`Something went wrong. Please try again later`)
         }
     }
 
@@ -170,13 +164,13 @@ const Category=()=> {
                                                     <label htmlFor="recipient-name" className="col-form-label" >Category Name :</label>
                                                     <input type="text" className="form-control" onChange={(event)=>{
                                                         setName(event.target.value)
-                                                    }} />
+                                                    }} value={name} />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="recipient-name" className="col-form-label" >Description</label>
                                                     <input type="text" className="form-control" onChange={(event)=>{
                                                         setDescription(event.target.value)
-                                                    }} />
+                                                    }} value={description}/>
                                                 </div>
                                                 <div className="form-group">
                                                     <ImageUploader withIcon={false}
@@ -185,6 +179,7 @@ const Category=()=> {
                                                                    singleImage={true}
                                                                    label={"Try to add a SVG image as it is lighter and more scalable"}
                                                                    buttonText={"Upload Icon for your category"}
+                                                                   defaultImage={"https://www.formula1.com/content/dam/fom-website/manual/Misc/2021preseason/Haas/LIVERY_UNVEIL_PR_3.jpg"}
                                                     />
                                                 </div>
                                             </form>
@@ -204,6 +199,7 @@ const Category=()=> {
                                         pagination={true}
                                         class="-striped -highlight"
                                         delete={deleteCategory}
+                                        edit={editCategory}
                                     />
                                 </div>
                             </div>
