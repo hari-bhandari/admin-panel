@@ -5,6 +5,7 @@ import data from '../../../assets/data/sub-category';
 import Datatable from '../../common/datatable'
 import useAxios from "axios-hooks";
 import Select from "react-select";
+import AsyncSelect from "../../_shared/AsyncSelect";
 const SubCategory =()=> {
     const [open,setOpen]=useState(false)
     const [category,setCategory]=useState(null)
@@ -15,7 +16,6 @@ const SubCategory =()=> {
     //     return (
     //         <div>Loading...</div>
     //     )
-
     // }
     const categoryOptions = [
         { value: 'smart phones', label: 'Smart Phones' },
@@ -47,11 +47,7 @@ const SubCategory =()=> {
                                 <div className="card-body">
                                     <div className="btn-popup ">
                                         <div className="subCat-top">
-                                            <Select
-                                                value={category}
-                                                onChange={handleChangeForCategory}
-                                                options={categoryOptions}
-                                            />
+                                            <AsyncSelect initialValue={"Please select the category"}/>
 
                                             <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Sub Category</button>
                                         </div>
