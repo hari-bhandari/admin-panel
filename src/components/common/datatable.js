@@ -65,12 +65,17 @@ export class Datatable extends Component {
                     Cell: (row) => (
                         <div>
                             <span onClick={() => {
+
                                 if (window.confirm('Are you sure you wish to delete this item?')) {
                                     let data = myData;
                                     data.splice(row.index, 1);
                                     this.setState({ myData: data });
+                                    if(this.props.delete){
+                                        this.props.delete(row.original._id)
+
+                                    }
                                 }
-                                toast.success("Successfully Deleted !")
+
 
                             }}>
                                 <i className="fa fa-trash" style={{ width: 35, fontSize: 20, padding: 11, color: '#e4566e' }}

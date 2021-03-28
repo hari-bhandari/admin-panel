@@ -73,6 +73,33 @@ const Category=()=> {
         }
         }
     }
+    const deleteCategory=async (id)=>{
+
+            try {
+                const res = await axios.delete(`/api/v1/category/${id}`);
+                toast.success(`You have successfully created a  category with the name of  ${res.data.message}`, {
+                    position: "top-center",
+                    autoClose: 10000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                refetch()
+            } catch (e) {
+                toast.error(e.response.data.error, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }
+
     data.data.forEach(item=>{
             if(typeof item.image==="string") {
                 item.image = (<img src={item.image} style={{width: 50, height: 50}}/>);
@@ -176,6 +203,7 @@ const Category=()=> {
                                         pageSize={10}
                                         pagination={true}
                                         class="-striped -highlight"
+                                        delete={deleteCategory}
                                     />
                                 </div>
                             </div>
