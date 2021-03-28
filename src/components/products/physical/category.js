@@ -4,9 +4,15 @@ import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import Datatable from '../../common/datatable';
 import useAxios from "axios-hooks";
+import ImageUploader from "react-images-upload";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 const Category=()=> {
     const [open,setOpen]=useState(false)
+    const [image,setImage]=useState(null)
+    const [name,setName]=useState(null)
+    const [description,setDescription]=useState(null)
     const [{data, loading, error}, refetch] = useAxios(
         '/api/v1/category'
     )
@@ -21,8 +27,52 @@ const Category=()=> {
     };
 
     const onCloseModal = () => {
-        setOpen(true)
+        setOpen(false)
     };
+    const addCategory=async ()=>{
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        if(name===null|| description===null){
+             toast.error(`Please add a valid name and description`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        else {
+
+        try {
+            const res = await axios.post('/api/v1/category', {name,description,image:image[0]}, config);
+            toast.success(`You have successfully created a  category with the name of  ${res.data.category.name}`, {
+                position: "top-center",
+                autoClose: 10000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            refetch()
+        } catch (e) {
+            toast.error(e.response.data.error, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        }
+    }
     data.data.forEach(item=>{
             if(typeof item.image==="string") {
                 item.image = (<img src={item.image} style={{width: 50, height: 50}}/>);
@@ -30,6 +80,43 @@ const Category=()=> {
             item.subCategory=0;
 
     })
+    const onDrop = async (pictures) => {
+        const formData = new FormData();
+        pictures.forEach(image=>{
+            formData.append("image", image);
+        })
+        try {
+            const res = await axios.post(`/api/v1/upload`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            if (res.data.imgLinks) {
+                setImage(res.data.imgLinks)
+                toast.success(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+            }
+
+
+        } catch (e) {
+            toast.error(`Something went wrong. Please try again later`, {
+                position: "top-center",
+                autoClose: 80000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+        }
+    }
 
     return (
         <Fragment>
@@ -54,16 +141,29 @@ const Category=()=> {
                                             <form>
                                                 <div className="form-group">
                                                     <label htmlFor="recipient-name" className="col-form-label" >Category Name :</label>
-                                                    <input type="text" className="form-control" />
+                                                    <input type="text" className="form-control" onChange={(event)=>{
+                                                        setName(event.target.value)
+                                                    }} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="message-text" className="col-form-label">Category Image :</label>
-                                                    <input className="form-control" id="validationCustom02" type="file" />
+                                                    <label htmlFor="recipient-name" className="col-form-label" >Description</label>
+                                                    <input type="text" className="form-control" onChange={(event)=>{
+                                                        setDescription(event.target.value)
+                                                    }} />
+                                                </div>
+                                                <div className="form-group">
+                                                    <ImageUploader withIcon={false}
+                                                                   withPreview={true}
+                                                                   onChange={onDrop}
+                                                                   singleImage={true}
+                                                                   label={"Try to add a SVG image as it is lighter and more scalable"}
+                                                                   buttonText={"Upload Icon for your category"}
+                                                    />
                                                 </div>
                                             </form>
                                         </div>
                                         <div className="modal-footer">
-                                            <button type="button" className="btn btn-primary" onClick={() => onCloseModal()}>Save</button>
+                                            <button type="button" className="btn btn-primary" onClick={() => addCategory()}>Save</button>
                                             <button type="button" className="btn btn-secondary" onClick={() => onCloseModal()}>Close</button>
                                         </div>
                                     </Modal>
