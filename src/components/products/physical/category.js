@@ -6,7 +6,6 @@ import Datatable from '../../common/datatable';
 import useAxios from "axios-hooks";
 import ImageUploader from "react-images-upload";
 import axios from "axios";
-import {toast} from "react-toastify";
 import {ShowError,ShowSuccess} from "../../../util/alert";
 const Category=()=> {
     const [open,setOpen]=useState(false)

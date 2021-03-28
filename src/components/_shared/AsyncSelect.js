@@ -25,7 +25,7 @@ const AsyncSelect = ({initialValue,background}) => {
             "&:hover": {
                 borderColor:background?"#168D71":"#fff"
             },
-            width:"200px"
+            width:background?"200px":"100%"
         }),
         menu: base => ({
             ...base,

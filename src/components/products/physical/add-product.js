@@ -3,11 +3,11 @@ import Breadcrumb from '../../common/breadcrumb';
 import CKEditors from "react-ckeditor-component";
 import {AvField, AvForm} from 'availity-reactstrap-validation';
 import 'react-dropzone-uploader/dist/styles.css'
-import ImageUploader from 'react-images-upload'
-import {toast} from "react-toastify";
 import axios from "axios";
 import Select from "react-select";
 import {ShowError, ShowSuccess} from "../../../util/alert";
+import PhotoUpload from "../../_shared/PhotoUpload";
+import AsyncSelect from "../../_shared/AsyncSelect";
 const Add_product = () => {
     const categoryOptions = [
         { value: 'smart phones', label: 'Smart Phones' },
@@ -23,7 +23,7 @@ const Add_product = () => {
 
 
 
-    const handleInvalidSubmit=(event, errors, values)=> {
+    const handleInvalidSubmit=()=> {
         ShowError("Something went wrong")
     }
 
@@ -33,50 +33,6 @@ const Add_product = () => {
     const [category,setCategory]=useState(null)
     const [subCategory,setSubCategory]=useState(null)
     const [description,setDescription]=useState('')
-
-    const onDropForThumbnail = async (picture) => {
-        const formData = new FormData();
-        const imageFile = picture[0];
-        formData.append("image", imageFile);
-        try {
-            const res = await axios.post(`/api/v1/upload`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-            if(res.data.imgLinks){
-                setThumbImage(res.data.imgLinks[0])
-                ShowSuccess(`You have successfully uploaded thumbnail image to cloud `)
-            }
-
-
-
-        } catch (e) {
-            ShowError(`Something went wrong. Please try again later`)
-        }
-
-    }
-    const onDrop = async (pictures) => {
-        const formData = new FormData();
-        pictures.forEach(image=>{
-            formData.append("image", image);
-        })
-        try {
-            const res = await axios.post(`/api/v1/upload`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-            if (res.data.imgLinks) {
-                setImages(res.data.imgLinks)
-                ShowSuccess(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `)
-            }
-
-
-        } catch (e) {
-           ShowError("Something went wrong. Please try again later")
-        }
-    }
     const IncrementItem = () => {
         setQuantity(quantity + 1)
     }
@@ -103,7 +59,7 @@ const Add_product = () => {
                 'Content-Type': 'application/json'
             }
         };
-        const data={name,price,countInStock:quantity,description,subCategory:subCategory.value,category:category.value,images,thumbImage}
+        const data={name,price,countInStock:quantity,description,subCategory:subCategory.value,category:category.value,images,thumbImage:thumbImage[0]}
 
         try {
             const res = await axios.post('/api/v1/products', data, config);
@@ -132,9 +88,9 @@ const Add_product = () => {
                                             <div className="row">
                                                 <div className="col-xl-9 xl-50 col-sm-6 col-9">
                                                     <h3>Add your thumbnail </h3>
-                                                    <ImageUploader withIcon={false}
+                                                    <PhotoUpload withIcon={false}
                                                                    withPreview={true}
-                                                                   onChange={onDropForThumbnail}
+                                                                    setImages={setThumbImage} images={thumbImage}
                                                                    singleImage={true}
                                                                    label={"This picture appears on the thumbnail.Make sure the picture looks detailed"}
                                                                    buttonText={"Choose your thumbnail image"}
@@ -143,12 +99,13 @@ const Add_product = () => {
                                                 </div>
                                                 <div className="col-xl-9 xl-50 col-sm-6 col-9">
                                                     <h3>Add more pictures </h3>
-                                                    <ImageUploader withIcon={false}
+                                                    <PhotoUpload withIcon={false}
                                                                    withPreview={true}
-                                                                   onChange={onDrop}
                                                                    singleImage={false}
                                                                    label={"Adding more pictures helps customer to be more certain"}
                                                                    buttonText={"Choose your thumbnail image"}
+                                                                 setImages={setImages} images={images}
+
                                                     />
 
                                                 </div>
@@ -183,11 +140,7 @@ const Add_product = () => {
                                                 <div className="form-group row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Select Category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <Select
-                                                            value={category}
-                                                            onChange={handleChangeForCategory}
-                                                            options={categoryOptions}
-                                                        />
+                                                        <AsyncSelect initialValue={"Select the category"}/>
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
@@ -208,24 +161,24 @@ const Add_product = () => {
                                                                 <button
                                                                     className="btn btn-primary btn-square bootstrap-touchspin-down"
                                                                     type="button" onClick={DecreaseItem}>
-                                                                    <i className="fa fa-minus"></i>
+                                                                    <i className="fa fa-minus"/>
                                                                 </button>
                                                             </div>
                                                             <div className="input-group-prepend">
                                                                 <span
-                                                                    className="input-group-text bootstrap-touchspin-prefix"></span>
+                                                                    className="input-group-text bootstrap-touchspin-prefix"/>
                                                             </div>
                                                             <input className="touchspin form-control" type="text"
                                                                    value={quantity} onChange={handleChange}/>
                                                             <div className="input-group-append">
                                                                 <span
-                                                                    className="input-group-text bootstrap-touchspin-postfix"></span>
+                                                                    className="input-group-text bootstrap-touchspin-postfix"/>
                                                             </div>
                                                             <div className="input-group-append ml-0">
                                                                 <button
                                                                     className="btn btn-primary btn-square bootstrap-touchspin-up"
                                                                     type="button" onClick={IncrementItem}>
-                                                                    <i className="fa fa-plus"></i>
+                                                                    <i className="fa fa-plus"/>
                                                                 </button>
                                                             </div>
                                                         </div>
