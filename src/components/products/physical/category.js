@@ -4,9 +4,9 @@ import Modal from 'react-responsive-modal';
 import 'react-toastify/dist/ReactToastify.css';
 import Datatable from '../../common/datatable';
 import useAxios from "axios-hooks";
-import ImageUploader from "react-images-upload";
 import axios from "axios";
 import {ShowError,ShowSuccess} from "../../../util/alert";
+import PhotoUpload from "../../_shared/PhotoUpload";
 const Category=()=> {
     const [open,setOpen]=useState(false)
     const [update,setUpdate]=useState(false)
@@ -113,30 +113,13 @@ const Category=()=> {
             if(typeof item.image==="string") {
                 item.image = (<img src={item.image} style={{width: 50, height: 50}}/>);
             }
-            item.subCategory=0;
-
-    })
-    const onDrop = async (pictures) => {
-        const formData = new FormData();
-        pictures.forEach(image=>{
-            formData.append("image", image);
-        })
-        try {
-            const res = await axios.post(`/api/v1/upload`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-            if (res.data.imgLinks) {
-                setImage(res.data.imgLinks)
-                ShowSuccess(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `)
+            const tempCount=item.subCategory.length
+            if(typeof tempCount==="number"){
+                item.subCategory=tempCount;
             }
 
 
-        } catch (e) {
-            ShowError(`Something went wrong. Please try again later`)
-        }
-    }
+    })
 
     return (
         <Fragment>
@@ -155,7 +138,7 @@ const Category=()=> {
                                     <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
                                     <Modal open={open} onClose={onCloseModal} >
                                         <div className="modal-header">
-                                            <h5 className="modal-title f-w-600" id="exampleModalLabel2">Add Physical Product</h5>
+                                            <h5 className="modal-title f-w-600" id="exampleModalLabel2">{update?"Update your Product":"Add Physical Product"}</h5>
                                         </div>
                                         <div className="modal-body">
                                             <form>
@@ -172,19 +155,19 @@ const Category=()=> {
                                                     }} value={description}/>
                                                 </div>
                                                 <div className="form-group">
-                                                    <ImageUploader withIcon={false}
+                                                    <PhotoUpload withIcon={false}
                                                                    withPreview={true}
-                                                                   onChange={onDrop}
                                                                    singleImage={true}
                                                                    label={"Try to add a SVG image as it is lighter and more scalable"}
                                                                    buttonText={"Upload Icon for your category"}
-                                                                   defaultImage={"https://www.formula1.com/content/dam/fom-website/manual/Misc/2021preseason/Haas/LIVERY_UNVEIL_PR_3.jpg"}
+                                                                 setImages={setImage} images={image}
+                                                                   defaultImages={["https://www.formula1.com/content/dam/fom-website/manual/Misc/2021preseason/Haas/LIVERY_UNVEIL_PR_3.jpg"]}
                                                     />
                                                 </div>
                                             </form>
                                         </div>
                                         <div className="modal-footer">
-                                            <button type="button" className="btn btn-primary" onClick={() => addCategory()}>Save</button>
+                                            <button type="button" className="btn btn-primary" onClick={() => addCategory()}>{update?"Update":"Add"}</button>
                                             <button type="button" className="btn btn-secondary" onClick={() => onCloseModal()}>Close</button>
                                         </div>
                                     </Modal>
