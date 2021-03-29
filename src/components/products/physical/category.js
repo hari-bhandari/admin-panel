@@ -11,6 +11,7 @@ const Category=()=> {
     const [open,setOpen]=useState(false)
     const [update,setUpdate]=useState(false)
     const [image,setImage]=useState([])
+    const [id,setId]=useState(null)
     const [name,setName]=useState(null)
     const [description,setDescription]=useState(null)
     const [{data, loading, error}, refetch] = useAxios(
@@ -39,12 +40,24 @@ const Category=()=> {
             ShowError("name and description must be added")
         }
         else {
-
         try {
+            if(!update){
+
             const res = await axios.post('/api/v1/category', {name,description,image:image[0]}, config);
             ShowSuccess(`You have successfully created a  category with the name of  ${res.data.category.name}`)
 
             refetch()
+            setOpen(false)
+
+            }
+            else {
+                 await axios.put(`/api/v1/category/${id}`, {name,description,image:image[0]}, config);
+                ShowSuccess(`You have successfully updated a  category with the id of  ${id}`)
+
+                refetch()
+                setOpen(false)
+            }
+
         } catch (e) {
             ShowError(e.response.data.error)
         }
@@ -66,6 +79,7 @@ const Category=()=> {
         setDescription(data.description)
         setImage([data.image.props.src])
         setUpdate(true)
+        setId(data._id)
         // const config = {
         //     headers: {
         //         'Content-Type': 'application/json'

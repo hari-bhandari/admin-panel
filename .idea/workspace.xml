@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="fixed default image bug and improvised update category">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="image shown correctly on update category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
     </list>
@@ -39,7 +39,7 @@
       <updated>1616878249477</updated>
       <workItem from="1616878250646" duration="1002000" />
       <workItem from="1616946839517" duration="16632000" />
-      <workItem from="1617005704645" duration="1669000" />
+      <workItem from="1617005704645" duration="2385000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -97,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617006893267</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="image shown correctly on update category">
+      <created>1617007432469</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617007432469</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +130,8 @@
     <MESSAGE value="made a function to show error and show success messsage and implemented it" />
     <MESSAGE value="created a component for PhotoUpload.js" />
     <MESSAGE value="fixed default image bug and improvised update category" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed default image bug and improvised update category" />
+    <MESSAGE value="image shown correctly on update category" />
+    <option name="LAST_COMMIT_MESSAGE" value="image shown correctly on update category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
