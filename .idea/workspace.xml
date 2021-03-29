@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="created a component for PhotoUpload.js">
-      <change afterPath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app.jsx" afterDir="false" />
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="fixed default image bug and improvised update category">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +39,7 @@
       <updated>1616878249477</updated>
       <workItem from="1616878250646" duration="1002000" />
       <workItem from="1616946839517" duration="16632000" />
-      <workItem from="1617005704645" duration="1060000" />
+      <workItem from="1617005704645" duration="1669000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -85,7 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616970156970</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed default image bug and improvised update category">
+      <created>1617006814653</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617006814653</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed default image bug and improvised update category">
+      <created>1617006893267</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617006893267</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +122,8 @@
     <MESSAGE value="added an optyion to be able to delete category" />
     <MESSAGE value="made a function to show error and show success messsage and implemented it" />
     <MESSAGE value="created a component for PhotoUpload.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a component for PhotoUpload.js" />
+    <MESSAGE value="fixed default image bug and improvised update category" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed default image bug and improvised update category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

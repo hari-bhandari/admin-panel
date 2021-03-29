@@ -10,7 +10,7 @@ import PhotoUpload from "../../_shared/PhotoUpload";
 const Category=()=> {
     const [open,setOpen]=useState(false)
     const [update,setUpdate]=useState(false)
-    const [image,setImage]=useState(null)
+    const [image,setImage]=useState([])
     const [name,setName]=useState(null)
     const [description,setDescription]=useState(null)
     const [{data, loading, error}, refetch] = useAxios(
@@ -64,6 +64,7 @@ const Category=()=> {
         setOpen(true)
         setName(data.name)
         setDescription(data.description)
+        setImage([data.image.props.src])
         setUpdate(true)
         // const config = {
         //     headers: {
@@ -161,7 +162,7 @@ const Category=()=> {
                                                                    label={"Try to add a SVG image as it is lighter and more scalable"}
                                                                    buttonText={"Upload Icon for your category"}
                                                                  setImages={setImage} images={image}
-                                                                   defaultImages={["https://www.formula1.com/content/dam/fom-website/manual/Misc/2021preseason/Haas/LIVERY_UNVEIL_PR_3.jpg"]}
+                                                                   defaultImages={image}
                                                     />
                                                 </div>
                                             </form>
