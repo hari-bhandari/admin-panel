@@ -3,6 +3,7 @@ import Breadcrumb from '../../common/breadcrumb';
 import data from '../../../assets/data/physical_list';
 import {Edit, Trash2} from 'react-feather'
 import useAxios from "axios-hooks";
+import {Link} from "react-router-dom";
 
 
 const Product_list = () => {
@@ -37,9 +38,15 @@ const Product_list = () => {
                                                         <div className="product-hover">
                                                             <ul>
                                                                 <li>
+
+                                                                    <Link to={{
+                                                                        pathname: "/products/physical/add-product",
+                                                                        state: myData
+                                                                    }}>
                                                                     <button className="btn" type="button">
                                                                         <Edit className="editBtn"/>
                                                                     </button>
+                                                                    </Link>
                                                                 </li>
                                                                 <li>
                                                                     <button className="btn" type="button">

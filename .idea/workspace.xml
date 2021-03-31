@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="image shown correctly on update category">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="default values for avi form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
     </list>
@@ -40,6 +40,9 @@
       <workItem from="1616878250646" duration="1002000" />
       <workItem from="1616946839517" duration="16632000" />
       <workItem from="1617005704645" duration="2385000" />
+      <workItem from="1617047546703" duration="1156000" />
+      <workItem from="1617055377046" duration="1862000" />
+      <workItem from="1617090920839" duration="3416000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -131,19 +134,20 @@
     <MESSAGE value="created a component for PhotoUpload.js" />
     <MESSAGE value="fixed default image bug and improvised update category" />
     <MESSAGE value="image shown correctly on update category" />
-    <option name="LAST_COMMIT_MESSAGE" value="image shown correctly on update category" />
+    <MESSAGE value="default values for avi form" />
+    <option name="LAST_COMMIT_MESSAGE" value="default values for avi form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/_shared/AsyncSelect.js</url>
-          <line>23</line>
+          <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/_shared/AsyncSelect.js</url>
-          <line>18</line>
+          <line>17</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

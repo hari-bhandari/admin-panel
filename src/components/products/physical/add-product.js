@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import Breadcrumb from '../../common/breadcrumb';
 import CKEditors from "react-ckeditor-component";
 import {AvField, AvForm} from 'availity-reactstrap-validation';
@@ -8,12 +8,8 @@ import Select from "react-select";
 import {ShowError, ShowSuccess} from "../../../util/alert";
 import PhotoUpload from "../../_shared/PhotoUpload";
 import AsyncSelect from "../../_shared/AsyncSelect";
-const Add_product = () => {
-    const categoryOptions = [
-        { value: 'smart phones', label: 'Smart Phones' },
-        { value: 'tv', label: 'TV' },
-        { value: 'watch', label: 'Watches' },
-    ];
+
+const Add_product = (props) => {
 
     const subCategoryOptions = [
         { value: 'apple', label: 'Apple' },
@@ -21,18 +17,31 @@ const Add_product = () => {
         { value: 'oppo', label: 'Oppo' },
     ];
 
-
-
     const handleInvalidSubmit=()=> {
         ShowError("Something went wrong")
     }
 
     const [quantity, setQuantity] = useState(1)
-    const [thumbImage, setThumbImage] = useState(null)
+    const [thumbImage, setThumbImage] = useState([])
     const [images, setImages] = useState([])
     const [category,setCategory]=useState(null)
     const [subCategory,setSubCategory]=useState(null)
     const [description,setDescription]=useState('')
+    const [item,setItem]=useState(null)
+    let defaultValues ={name:"Hari Bhandari",price:11.11}
+    useEffect(()=>{
+        if(props.location.state){
+            const {state}=props.location
+            setItem(state)
+            setImages(state.images)
+            setThumbImage([state.thumbImage])
+            setSubCategory(state.subCategory)
+            setQuantity(state.countInStock)
+            setDescription(state.description)
+
+        }
+    },[props.location.state])
+
     const IncrementItem = () => {
         setQuantity(quantity + 1)
     }
@@ -42,9 +51,6 @@ const Add_product = () => {
     const handleChange = (e) => {
         setQuantity(e.target.value)
     }
-    const  handleChangeForCategory = selectedOption => {
-        setCategory( selectedOption );
-    };
     const  handleChangeForSubCategory = selectedOption => {
         setSubCategory( selectedOption );
     };
@@ -94,6 +100,8 @@ const Add_product = () => {
                                                                    singleImage={true}
                                                                    label={"This picture appears on the thumbnail.Make sure the picture looks detailed"}
                                                                    buttonText={"Choose your thumbnail image"}
+                                                                 defaultImages={thumbImage}
+
                                                     />
 
                                                 </div>
@@ -105,6 +113,7 @@ const Add_product = () => {
                                                                    label={"Adding more pictures helps customer to be more certain"}
                                                                    buttonText={"Choose your thumbnail image"}
                                                                  setImages={setImages} images={images}
+                                                                 defaultImages={images}
 
                                                     />
 
@@ -117,7 +126,7 @@ const Add_product = () => {
                                         </div>
                                     </div>
                                     <div className="col-xl-7">
-                                        <AvForm className="needs-validation add-product-form" onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit}>
+                                        <AvForm className="needs-validation add-product-form" onValidSubmit={handleValidSubmit} onInvalidSubmit={handleInvalidSubmit} model={defaultValues}>
                                             <div className="form form-label-center">
                                                 <div className="form-group mb-3 row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Product Name :</label>

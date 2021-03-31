@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import Select from "react-select";
 import useAxios from "axios-hooks";
 
-const AsyncSelect = ({initialValue,background}) => {
+const AsyncSelect = ({initialValue,background,setValue,value}) => {
     const [{data, loading, error}, refetch] = useAxios(
         '/api/v1/category'
     )
-    const [value, setValue] = useState(null);
     const onchangeSelect = (item) => {
         setValue(item)
     };
