@@ -18,11 +18,11 @@ const AsyncSelect = ({initialValue,background,setValue,value}) => {
     const customStyles = {
         control: (base) => ({
             ...base,
-            background:background?"#168D71":"#e5e4e4",
+            background:background?"#168D71":"",
             color:"white",
-            borderColor:background?"#168D71":"#e5e4e4",
+            borderColor:background?"#168D71":"#CED4DA",
             "&:hover": {
-                borderColor:background?"#168D71":"#fff"
+                borderColor:background?"#168D71":""
             },
             width:background?"200px":"100%"
         }),

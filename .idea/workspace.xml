@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="default values for avi form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/add-product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/addProductHook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/addProductHook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/auth/AuthState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/auth/AuthState.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +18,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1qM8lVmYQsgYQXMgH54jZiUFE4e" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,6 +48,11 @@
       <workItem from="1617047546703" duration="1156000" />
       <workItem from="1617055377046" duration="1862000" />
       <workItem from="1617090920839" duration="3416000" />
+      <workItem from="1617221797506" duration="1800000" />
+      <workItem from="1617224314967" duration="3389000" />
+      <workItem from="1617264389175" duration="343000" />
+      <workItem from="1617274158042" duration="423000" />
+      <workItem from="1617291993749" duration="934000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -140,11 +150,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/_shared/AsyncSelect.js</url>
-          <line>22</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/_shared/AsyncSelect.js</url>
           <line>17</line>
