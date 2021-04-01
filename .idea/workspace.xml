@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="default values for avi form">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="update product default values working correctly and made the add product dynamic so it can handle both update and add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/add-product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/addProductHook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/addProductHook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/auth/AuthState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/auth/AuthState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
       <workItem from="1617224314967" duration="3389000" />
       <workItem from="1617264389175" duration="343000" />
       <workItem from="1617274158042" duration="423000" />
-      <workItem from="1617291993749" duration="934000" />
+      <workItem from="1617291993749" duration="6896000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -117,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617007432469</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update product default values working correctly and made the add product dynamic so it can handle both update and add">
+      <created>1617295604678</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617295604678</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,17 +151,7 @@
     <MESSAGE value="fixed default image bug and improvised update category" />
     <MESSAGE value="image shown correctly on update category" />
     <MESSAGE value="default values for avi form" />
-    <option name="LAST_COMMIT_MESSAGE" value="default values for avi form" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/_shared/AsyncSelect.js</url>
-          <line>17</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="update product default values working correctly and made the add product dynamic so it can handle both update and add" />
+    <option name="LAST_COMMIT_MESSAGE" value="update product default values working correctly and made the add product dynamic so it can handle both update and add" />
   </component>
 </project>

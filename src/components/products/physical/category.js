@@ -13,6 +13,7 @@ const Category=()=> {
     const [image,setImage]=useState([])
     const [id,setId]=useState(null)
     const [name,setName]=useState(null)
+    const [categoryId,setCategoryId]=useState(null)
     const [description,setDescription]=useState(null)
     const [{data, loading, error}, refetch] = useAxios(
         '/api/v1/category'
@@ -43,7 +44,7 @@ const Category=()=> {
         try {
             if(!update){
 
-            const res = await axios.post('/api/v1/category', {name,description,image:image[0]}, config);
+            const res = await axios.post('/api/v1/category', {name,description,image:image[0],id:categoryId}, config);
             ShowSuccess(`You have successfully created a  category with the name of  ${res.data.category.name}`)
 
             refetch()
@@ -51,7 +52,7 @@ const Category=()=> {
 
             }
             else {
-                 await axios.put(`/api/v1/category/${id}`, {name,description,image:image[0]}, config);
+                 await axios.put(`/api/v1/category/${id}`, {name,description,image:image[0],id:categoryId}, config);
                 ShowSuccess(`You have successfully updated a  category with the id of  ${id}`)
 
                 refetch()
@@ -80,48 +81,6 @@ const Category=()=> {
         setImage([data.image.props.src])
         setUpdate(true)
         setId(data._id)
-        // const config = {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // };
-        // if(name===null|| description===null){
-        //     toast.error(`Please add a valid name and description`, {
-        //         position: "top-center",
-        //         autoClose: 5000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //     });
-        // }
-        // else {
-        //
-        //     try {
-        //         const res = await axios.put(`/api/v1/category/${data._id}`, {name,description,image:image[0]}, config);
-        //         toast.success(`You have successfully updated a  category with the name of  ${res.data.category.name}`, {
-        //             position: "top-center",
-        //             autoClose: 10000,
-        //             hideProgressBar: false,
-        //             closeOnClick: true,
-        //             pauseOnHover: true,
-        //             draggable: true,
-        //             progress: undefined,
-        //         });
-        //         refetch()
-        //     } catch (e) {
-        //         toast.error(e.response.data.error, {
-        //             position: "top-center",
-        //             autoClose: 5000,
-        //             hideProgressBar: false,
-        //             closeOnClick: true,
-        //             pauseOnHover: true,
-        //             draggable: true,
-        //             progress: undefined,
-        //         });
-        //     }
-        // }
     }
 
     data.data.forEach(item=>{
@@ -168,6 +127,12 @@ const Category=()=> {
                                                     <input type="text" className="form-control" onChange={(event)=>{
                                                         setDescription(event.target.value)
                                                     }} value={description}/>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="recipient-name" className="col-form-label" >Category ID/Slug</label>
+                                                    <input type="text" className="form-control"  onChange={(event)=>{
+                                                        setCategoryId(event.target.value)
+                                                    }} value={categoryId}/>
                                                 </div>
                                                 <div className="form-group">
                                                     <PhotoUpload withIcon={false}

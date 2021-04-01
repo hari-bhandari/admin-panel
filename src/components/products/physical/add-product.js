@@ -75,7 +75,7 @@ const Add_product = ({location}) => {
 
     return (
         <Fragment>
-            <Breadcrumb title="Add Product" parent="Physical"/>
+            <Breadcrumb title={item?'Update product':'Add product' } parent="Physical"/>
 
             <div className="container-fluid">
                 <div className="row">
@@ -148,7 +148,7 @@ const Add_product = ({location}) => {
                                                 <div className="form-group row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Select Category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <AsyncSelect initialValue={"Select the category"}/>
+                                                        <AsyncSelect initialValue={"Select the category"} setValue={setCategory} value={category}/>
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
