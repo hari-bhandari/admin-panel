@@ -112,7 +112,7 @@ const Category=()=> {
                                     <button type="button" className="btn btn-primary" onClick={onOpenModal} data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Category</button>
                                     <Modal open={open} onClose={onCloseModal} >
                                         <div className="modal-header">
-                                            <h5 className="modal-title f-w-600" id="exampleModalLabel2">{update?"Update your Product":"Add Physical Product"}</h5>
+                                            <h5 className="modal-title f-w-600" id="exampleModalLabel2">{update?"Update your Category":"Add a category"}</h5>
                                         </div>
                                         <div className="modal-body">
                                             <form>

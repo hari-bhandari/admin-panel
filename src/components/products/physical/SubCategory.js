@@ -13,6 +13,7 @@ const SubCategory =()=> {
     const [update,setUpdate]=useState(false)
     const [name,setName]=useState('')
     const [id,setID]=useState('')
+    const [subCategoryID,setSubCategoryID]=useState('')
     const fetchData=async ()=>{
         const link=category?`/api/v1/subcategory/${category._id}`:"/api/v1/subcategory"
         try{
@@ -49,7 +50,7 @@ const SubCategory =()=> {
         else {
             try {
                 if(!update){
-                    const res = await axios.post(`/api/v1/subcategory/${category._id}`, {name,id}, config);
+                    await axios.post(`/api/v1/subcategory/${category._id}`, {name,id}, config);
                     ShowSuccess(`You have successfully created a  subcategory `)
                     setCategory(null)
                     setName('')
@@ -58,7 +59,7 @@ const SubCategory =()=> {
 
                 }
                 else {
-                    await axios.post(`/api/v1/subcategory/${category._id}`, {name,id}, config);
+                    await axios.put(`/api/v1/subcategory/${subCategoryID}`, {name,id}, config);
                     ShowSuccess(`You have successfully updated a subcategory `)
                     setCategory(null)
                     setName('')
@@ -68,7 +69,6 @@ const SubCategory =()=> {
 
             } catch (e) {
                 console.log(e)
-                ShowError(e.response.data.error)
             }
         }
     }
@@ -84,8 +84,9 @@ const SubCategory =()=> {
     const editCategory=async (data)=>{
         setOpen(true)
         setName(data.name)
-        setID(data.category)
-
+        setID(data.id)
+        setUpdate(true)
+        setSubCategoryID(data._id)
     }
 
 
@@ -111,12 +112,13 @@ const SubCategory =()=> {
 
                                         <Modal open={open} onClose={onOpenModal} >
                                             <div className="modal-header">
-                                                <h5 className="modal-title f-w-600" id="exampleModalLabel2">Add Sub Category</h5>
+                                                <h5 className="modal-title f-w-600" id="exampleModalLabel2">{update?"Update your sub Category":"Add a subcategory"}</h5>
                                             </div>
                                             <div className="modal-body">
                                                 <form>
                                                     <div className="form-group">
-                                                       <CategorySelect initialValue={"Select Category"} setValue={setCategory} value={category}/>
+
+                                                        {!update&&<CategorySelect initialValue={"Select Category"} setValue={setCategory} value={category}/>}
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="recipient-name" className="col-form-label" >Sub Category Name :</label>
@@ -133,7 +135,7 @@ const SubCategory =()=> {
                                                 </form>
                                             </div>
                                             <div className="modal-footer">
-                                                <button type="button" className="btn btn-primary" onClick={addSubCategory}>Save</button>
+                                                <button type="button" className="btn btn-primary" onClick={addSubCategory}>{update?"Save":"Add"}</button>
                                                 <button type="button" className="btn btn-secondary" onClick={onCloseModal}>Close</button>
                                             </div>
                                         </Modal>

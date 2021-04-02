@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="added a function to add subcategory">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="added a function to delete subCat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/SubCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/SubCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617402873526</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added a function to delete subCat">
+      <created>1617404738954</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617404738954</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +207,8 @@
     <MESSAGE value="converted datatable into functional component" />
     <MESSAGE value="subCategory filtering working now" />
     <MESSAGE value="added a function to add subcategory" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a function to add subcategory" />
+    <MESSAGE value="added a function to delete subCat" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a function to delete subCat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -212,7 +221,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/products/physical/SubCategory.js</url>
-          <line>39</line>
+          <line>40</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
