@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="update product default values working correctly and made the add product dynamic so it can handle both update and add">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="select component for category is working now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/CategorySelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/add-product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +16,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1qM8lVmYQsgYQXMgH54jZiUFE4e" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -52,6 +61,7 @@
       <workItem from="1617264389175" duration="343000" />
       <workItem from="1617274158042" duration="423000" />
       <workItem from="1617291993749" duration="6896000" />
+      <workItem from="1617306830263" duration="5242000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -123,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617295604678</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="select component for category is working now">
+      <created>1617306914325</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617306914325</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +169,7 @@
     <MESSAGE value="image shown correctly on update category" />
     <MESSAGE value="default values for avi form" />
     <MESSAGE value="update product default values working correctly and made the add product dynamic so it can handle both update and add" />
-    <option name="LAST_COMMIT_MESSAGE" value="update product default values working correctly and made the add product dynamic so it can handle both update and add" />
+    <MESSAGE value="select component for category is working now" />
+    <option name="LAST_COMMIT_MESSAGE" value="select component for category is working now" />
   </component>
 </project>

@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Select from "react-select";
 import useAxios from "axios-hooks";
 
-const AsyncSelect = ({initialValue,background,setValue,value,setSubCategory}) => {
-    const [{data, loading, error}, refetch] = useAxios(
+const CategorySelect = ({initialValue,background,setValue,value}) => {
+    const [{data, loading}] = useAxios(
         '/api/v1/category'
     )
     const onchangeSelect = (item) => {
         setValue(item)
-        if(setSubCategory){
-            setSubCategory(item.subCategory)
-        }
     };
     if(loading){
         return (
@@ -68,4 +65,4 @@ const AsyncSelect = ({initialValue,background,setValue,value,setSubCategory}) =>
     );
 };
 
-export default AsyncSelect;
+export default CategorySelect;

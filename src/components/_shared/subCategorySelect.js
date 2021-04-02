@@ -1,21 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Select from "react-select";
+import useAxios from "axios-hooks";
+import axios from "axios";
 
-const AsyncSelect = ({data,initialValue,setValue}) => {
+const SubCategorySelect = ({categoryID,initialValue,setValue,setSubCategory,value}) => {
+    const [fetchedData,setFetchedData]=useState([])
+    const [disabled,setDisabled]=useState(false)
+    const effectHelper=async ()=>{
+        if(typeof categoryID ==='string'){
+            const res=await axios.get(`/api/v1/subcategory/${categoryID}`)
+            setFetchedData(res.data.data)
+            setDisabled(false)
 
-    const onChangeSelect = (item) => {
+        }
+    }
+    useEffect(()=>{
+       effectHelper().then(()=>{})
+    },[categoryID])
+
+
+    const onchangeSelect = (item) => {
         setValue(item)
+        if(setSubCategory){
+            setSubCategory(item.subCategory)
+        }
     };
+
 
     return (
         <Select
-            value={data}
+            value={value}
             placeholder={initialValue}
-            onChange={onChangeSelect}
-            options={data.data}
+            onChange={onchangeSelect}
+            options={fetchedData}
             getOptionValue={(option) => option.id}
-            getOptionLabel={(option) => option.name}/>
+            getOptionLabel={(option) => option.name}
+            isDisabled={disabled}
+        />
     );
 };
 
-export default AsyncSelect;
+export default SubCategorySelect;

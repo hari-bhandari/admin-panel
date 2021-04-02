@@ -6,8 +6,9 @@ import axios from "axios";
 import Select from "react-select";
 import {ShowError, ShowSuccess} from "../../../util/alert";
 import PhotoUpload from "../../_shared/PhotoUpload";
-import AsyncSelect from "../../_shared/AsyncSelect";
+import CategorySelect from "../../_shared/CategorySelect";
 import {useForm} from 'react-hook-form';
+import SubCategorySelect from "../../_shared/subCategorySelect";
 
 const Add_product = ({location}) => {
 
@@ -71,6 +72,14 @@ const Add_product = ({location}) => {
     const onChange = (e) => {
         const newContent = e.editor.getData();
         setDescription(newContent)
+    }
+    const getCategoryID=()=>{
+        if(!category){
+            return null
+        }
+        return category._id
+
+
     }
 
     return (
@@ -148,17 +157,14 @@ const Add_product = ({location}) => {
                                                 <div className="form-group row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Select Category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <AsyncSelect initialValue={"Select the category"} setValue={setCategory} value={category}/>
+                                                        <CategorySelect initialValue={"Select the category"} setValue={setCategory} value={category}/>
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Select sub
                                                         category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <Select
-                                                            value={subCategory}
-                                                            onChange={handleChangeForSubCategory}
-                                                            options={subCategoryOptions}
+                                                        <SubCategorySelect initialValue={"Choose your subcategory"} setValue={setSubCategory} value={subCategory} categoryID={getCategoryID()}
                                                         />
                                                     </div>
                                                 </div>
