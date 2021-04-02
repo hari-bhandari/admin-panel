@@ -20,7 +20,6 @@ const Add_product = ({location}) => {
         {value: 'samsung', label: 'Samsung'},
         {value: 'oppo', label: 'Oppo'},
     ];
-    const [quantity, setQuantity] = useState(1)
     const [thumbImage, setThumbImage] = useState([])
     const [images, setImages] = useState([])
     const [category, setCategory] = useState(null)
@@ -35,7 +34,6 @@ const Add_product = ({location}) => {
             setImages(state.images)
             setThumbImage([state.thumbImage])
             setSubCategory(state.subCategory)
-            setQuantity(state.countInStock)
             setDescription(state.description)
         }
     }, [location.state])
@@ -46,29 +44,38 @@ const Add_product = ({location}) => {
                 'Content-Type': 'application/json'
             }
         };
+        if(!category){
+            return ShowError('You must select category before you add products')
+        }
+        const SubCategory=subCategory?{subCategory:subCategory.id}:{}
         const formData = {
+            ...SubCategory,
             name,
             price,
             countInStock,
             description,
-            subCategory: subCategory.value,
-            category: category.value,
+            category: category.id,
             images,
             thumbImage: thumbImage[0]
         }
-
-        try {
-            const res = await axios.post('/api/v1/products', formData, config);
-            ShowSuccess(`You have successfully created a  product with the name of  ${res.data.name}`)
-        } catch (e) {
-            ShowError(e.response.data.error)
+        if (location.state) {
+            try {
+                const res = await axios.put(`/api/v1/products/${location.state._id}`, formData, config);
+                ShowSuccess(`You have successfully updated a  product with the name of  ${res.data.name}`)
+            } catch (e) {
+                ShowError(e.response.data.error)
+            }
         }
-
-
+        else {
+            try {
+                const res = await axios.post('/api/v1/products', formData, config);
+                ShowSuccess(`You have successfully created a  product with the name of  ${res.data.name}`)
+            } catch (e) {
+                ShowError(e.response.data.error)
+            }
+        }
     }
-    const handleChangeForSubCategory = selectedOption => {
-        setSubCategory(selectedOption);
-    };
+
     const onChange = (e) => {
         const newContent = e.editor.getData();
         setDescription(newContent)
