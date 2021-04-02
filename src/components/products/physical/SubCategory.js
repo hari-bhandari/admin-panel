@@ -73,23 +73,20 @@ const SubCategory =()=> {
         }
     }
     const deleteCategory=async (id)=>{
-
         try {
-            const res = await axios.delete(`/api/v1/category/${id}`);
-            ShowSuccess(`You have successfully created a  category with the name of  ${res.data.message}`)
-            setCategory(null)
+            const res = await axios.delete(`/api/v1/subcategory/${id}`);
+            ShowSuccess(`You have successfully deleted a  sub category with the name of  ${res.data.message}`)
+            setCategory('')
         } catch (e) {
             ShowError(e.response.data.error)
         }
     }
-    // const editCategory=async (data)=>{
-    //     setOpen(true)
-    //     setName(data.name)
-    //     setDescription(data.description)
-    //     setImage([data.image.props.src])
-    //     setUpdate(true)
-    //     setId(data._id)
-    // }
+    const editCategory=async (data)=>{
+        setOpen(true)
+        setName(data.name)
+        setID(data.category)
+
+    }
 
 
 
@@ -149,6 +146,8 @@ const SubCategory =()=> {
                                             pageSize={10}
                                             pagination={false}
                                             class="-striped -highlight"
+                                            delete={deleteCategory}
+                                            edit={editCategory}
                                         />
                                     </div>
                                 </div>
