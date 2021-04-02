@@ -1,14 +1,19 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const Datatable =(props)=> {
 
-    const [myData,setMyData]=useState(props.myData)
+    const [myData,setMyData]=useState([])
+    useEffect(()=>{
+        setMyData([])
+        props.myData.forEach(subC=>{
+            setMyData(data=>[...data,subC])
+            console.log(myData)
 
+        })
+    },[props.myData])
 
     const renderEditable = (cellInfo) => {
         return (
@@ -96,7 +101,6 @@ const Datatable =(props)=> {
                 className={myClass}
                 showPagination={pagination}
             />
-            <ToastContainer />
         </Fragment>
     )
 }

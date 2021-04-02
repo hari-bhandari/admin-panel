@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="removing subCategory when category is changed">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="converted datatable into functional component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/datatable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/AddProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/product-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/ProductList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/SubCategory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617381578417</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="converted datatable into functional component">
+      <created>1617398837018</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1617398837018</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,14 +183,15 @@
     <MESSAGE value="update product default values working correctly and made the add product dynamic so it can handle both update and add" />
     <MESSAGE value="select component for category is working now" />
     <MESSAGE value="removing subCategory when category is changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing subCategory when category is changed" />
+    <MESSAGE value="converted datatable into functional component" />
+    <option name="LAST_COMMIT_MESSAGE" value="converted datatable into functional component" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/common/datatable.js</url>
-          <line>54</line>
+          <line>59</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
