@@ -157,7 +157,7 @@ const Add_product = ({location}) => {
                                                 <div className="form-group row">
                                                     <label className="col-xl-3 col-sm-4 mb-0">Select Category</label>
                                                     <div className="col-xl-8 col-sm-7">
-                                                        <CategorySelect initialValue={"Select the category"} setValue={setCategory} value={category}/>
+                                                        <CategorySelect initialValue={"Select the category"} setValue={setCategory} value={category} setSubCategory={setSubCategory}/>
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">

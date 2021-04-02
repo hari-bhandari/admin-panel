@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="select component for category is working now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_shared/AsyncSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/CategorySelect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/subCategorySelect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/CategorySelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/CategorySelect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/add-product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,7 @@
       <workItem from="1617274158042" duration="423000" />
       <workItem from="1617291993749" duration="6896000" />
       <workItem from="1617306830263" duration="5242000" />
+      <workItem from="1617363404974" duration="868000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>

@@ -2,12 +2,15 @@ import React from 'react';
 import Select from "react-select";
 import useAxios from "axios-hooks";
 
-const CategorySelect = ({initialValue,background,setValue,value}) => {
+const CategorySelect = ({initialValue,background,setValue,value,setSubCategory}) => {
     const [{data, loading}] = useAxios(
         '/api/v1/category'
     )
     const onchangeSelect = (item) => {
         setValue(item)
+        if(setSubCategory){
+            setSubCategory(null)
+        }
     };
     if(loading){
         return (
