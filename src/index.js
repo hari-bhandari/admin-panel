@@ -10,9 +10,9 @@ import Dashboard from './components/dashboard';
 
 // Products physical
 import Category from './components/products/physical/category';
-import Sub_category from './components/products/physical/sub-category';
-import Product_list from './components/products/physical/product-list';
-import Add_product from './components/products/physical/add-product';
+import Sub_category from './components/products/physical/SubCategory';
+import Product_list from './components/products/physical/ProductList';
+import Add_product from './components/products/physical/AddProduct';
 
 //Sales
 import Orders from './components/sales/orders';

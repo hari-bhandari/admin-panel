@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="removing subCategory when category is changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/add-product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/datatable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/add-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/AddProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/product-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/ProductList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/products/physical/sub-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/products/physical/SubCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,5 +180,17 @@
     <MESSAGE value="select component for category is working now" />
     <MESSAGE value="removing subCategory when category is changed" />
     <option name="LAST_COMMIT_MESSAGE" value="removing subCategory when category is changed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/common/datatable.js</url>
+          <line>54</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
