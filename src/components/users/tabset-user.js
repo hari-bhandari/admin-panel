@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {toast} from "react-toastify";
 import {ShowError, ShowSuccess} from "../../util/alert";
 
 const  Tabset_user=()=> {
@@ -28,8 +27,12 @@ const  Tabset_user=()=> {
                         <form className="needs-validation user-add" onSubmit={handleSubmit(onSubmit)}>
                             <h4>Account Details</h4>
                             <div className="form-group row">
-                                <label className="col-xl-3 col-md-4"><span>*</span>Name</label>
-                                <input className="form-control col-xl-8 col-md-7" id="validationCustom0" name={"name"} type="text" required={true} ref={register({required: true, maxLength: 80})}/>
+                                <label className="col-xl-3 col-md-4"><span>*</span>First Name</label>
+                                <input className="form-control col-xl-8 col-md-7" id="validationCustom0" name={"firstName"} type="text" required={true} ref={register({required: true, maxLength: 80})}/>
+                            </div>
+                            <div className="form-group row">
+                                <label className="col-xl-3 col-md-4"><span>*</span>Last Name</label>
+                                <input className="form-control col-xl-8 col-md-7" id="validationCustom0" name={"lastName"} type="text" required={true} ref={register({required: true, maxLength: 80})}/>
                             </div>
 
                             <div className="form-group row">
