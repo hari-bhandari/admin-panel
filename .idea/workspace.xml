@@ -60,6 +60,7 @@
       <workItem from="1617291993749" duration="6896000" />
       <workItem from="1617306830263" duration="5242000" />
       <workItem from="1617363404974" duration="3758000" />
+      <workItem from="1617439938188" duration="517000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -208,7 +209,8 @@
     <MESSAGE value="subCategory filtering working now" />
     <MESSAGE value="added a function to add subcategory" />
     <MESSAGE value="added a function to delete subCat" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a function to delete subCat" />
+    <MESSAGE value="h" />
+    <option name="LAST_COMMIT_MESSAGE" value="h" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -216,13 +218,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/common/datatable.js</url>
           <line>59</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/products/physical/SubCategory.js</url>
           <line>40</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
