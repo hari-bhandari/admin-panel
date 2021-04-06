@@ -4,7 +4,11 @@ import axios from "axios";
 import {ShowError, ShowSuccess} from "../../util/alert";
 
 const PhotoUpload = ({withIcon,withPreview,singleImage,label,buttonText,setImages,images,defaultImages}) => {
-    const onDropForThumbnail = async (pictures) => {
+    const onDrop = async (pictures) => {
+        if(pictures.length==0){
+            return null
+        }
+
         const formData = new FormData();
         pictures.forEach(image=>{
             formData.append("image", image);
@@ -16,7 +20,7 @@ const PhotoUpload = ({withIcon,withPreview,singleImage,label,buttonText,setImage
                 }
             })
             if (res.data.imgLinks) {
-                setImages(res.data.imgLinks)
+                setImages([...images,...res.data.imgLinks])
                 ShowSuccess(`You have successfully uploaded ${res.data.imgLinks.length} images to cloud `)
             }
 
@@ -28,7 +32,7 @@ const PhotoUpload = ({withIcon,withPreview,singleImage,label,buttonText,setImage
     return (
         <ImageUploader withIcon={withIcon}
                        withPreview={withPreview}
-                       onChange={onDropForThumbnail}
+                       onChange={onDrop}
                        singleImage={singleImage}
                        label={label}
                        buttonText={buttonText}

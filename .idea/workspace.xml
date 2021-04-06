@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="added a function to edit subCat">
+    <list default="true" id="e5deccf5-d38a-4c48-b1fd-06d38a6ccf8b" name="Default Changelist" comment="added a new field for lastname and firstname on create user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/users/tabset-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/users/tabset-user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_shared/PhotoUpload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/dropzone.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +60,10 @@
       <workItem from="1617291993749" duration="6896000" />
       <workItem from="1617306830263" duration="5242000" />
       <workItem from="1617363404974" duration="3758000" />
-      <workItem from="1617439938188" duration="1551000" />
+      <workItem from="1617439938188" duration="5275000" />
+      <workItem from="1617472593569" duration="1946000" />
+      <workItem from="1617518216485" duration="656000" />
+      <workItem from="1617540201479" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="added async select">
       <created>1616954399855</created>
@@ -180,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617440537183</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added a new field for lastname and firstname on create user">
+      <created>1617441547187</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1617441547187</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +228,8 @@
     <MESSAGE value="added a function to delete subCat" />
     <MESSAGE value="h" />
     <MESSAGE value="added a function to edit subCat" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a function to edit subCat" />
+    <MESSAGE value="added a new field for lastname and firstname on create user" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a new field for lastname and firstname on create user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
